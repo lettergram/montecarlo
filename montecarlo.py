@@ -13,12 +13,14 @@ def monte(func, n, ymin, ymax, xmin, xmax):
     y = np.random.uniform(ymin, ymax, n)
 
     for i in range(n):
-        sum += 2 * func(x[i], y[i])
+        sum += func(x[i], y[i])
         print(i, sum / (i+1))
 
-    return sum / n
 
-total1 = monte(func1, 30000, 0, 1, 2, 4)
-total2 = monte(func2, 30000, 1, 3, 1, 2)
+    area = abs(xmax - xmin) * abs(ymax - ymin)
+    return area * (sum / n)
+
+total1 = monte(func1, 10000, 1, 5, 1, 5)
+total2 = monte(func2, 10000, 1, 3, 1, 2)
 
 print(total1, total2)
